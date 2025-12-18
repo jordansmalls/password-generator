@@ -1,10 +1,10 @@
-const charset = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$&(){}[]/*:;-_="'|+`;
+const charset = `abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789?!@#$&(){}[]/*:;-_="'|+%~`;
 
 // Define subsets for guaranteed inclusion
 const lower = "abcdefghijklmnopqrstuvwxyz";
 const upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const numbers = "0123456789";
-const symbols = `!@#$&():-_*{}[]"'|/=+`;
+const symbols = `?!@#$&():-_*{}[]"'|/=+%~`;
 const colons = ";:";
 
 const length = 48;
@@ -72,6 +72,8 @@ const generatePassword = function (len = 48) {
     passwordChars.push(getRandomChar(numbers));
     passwordChars.push(getRandomChar(symbols));
     passwordChars.push(getRandomChar(symbols));
+    // force add a colon to the password
+    passwordChars.push(":");
     passwordChars.push(getRandomChar(colons));
 
     const minLength = passwordChars.length;
